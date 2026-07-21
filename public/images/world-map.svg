@@ -1,0 +1,210 @@
+<svg
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 1200 600"
+>
+
+
+<defs>
+
+<!-- Glow -->
+
+<radialGradient id="glow">
+
+<stop
+offset="0%"
+stop-color="#D4A017"
+stop-opacity="1"
+/>
+
+<stop
+offset="100%"
+stop-color="#D4A017"
+stop-opacity="0"
+/>
+
+</radialGradient>
+
+
+</defs>
+
+
+
+<!-- Background -->
+
+<rect
+width="1200"
+height="600"
+fill="#0f2b4d"
+/>
+
+
+
+
+<!-- Simplified World -->
+
+<g
+fill="#ffffff"
+opacity="0.15"
+>
+
+
+<path
+d="
+M150 220
+C220 130 350 130 420 200
+C470 250 420 320 300 330
+C200 340 100 300 150 220
+"
+/>
+
+
+<path
+d="
+M500 170
+C650 100 820 130 900 220
+C970 310 850 380 650 340
+C540 320 450 240 500 170
+"
+/>
+
+
+<path
+d="
+M820 400
+C930 350 1060 390 1100 470
+C980 520 850 500 820 400
+"
+/>
+
+
+</g>
+
+
+
+
+<!-- Trade Routes -->
+
+<g
+stroke="#D4A017"
+stroke-width="3"
+fill="none"
+opacity="0.8"
+>
+
+
+<path
+d="
+M300 250
+Q600 100 850 230
+"
+/>
+
+
+<path
+d="
+M300 250
+Q550 350 900 260
+"
+/>
+
+
+<path
+d="
+M600 230
+Q850 420 1000 450
+"
+/>
+
+
+</g>
+
+
+
+
+<!-- Cities -->
+
+<g
+fill="#D4A017"
+>
+
+
+<circle
+cx="300"
+cy="250"
+r="8"
+/>
+
+
+<circle
+cx="600"
+cy="230"
+r="8"
+/>
+
+
+<circle
+cx="850"
+cy="230"
+r="8"
+/>
+
+
+<circle
+cx="1000"
+cy="450"
+r="8"
+/>
+
+
+</g>
+
+
+
+
+<!-- Glow Points -->
+
+<circle
+cx="300"
+cy="250"
+r="40"
+fill="url(#glow)"
+/>
+
+
+<circle
+cx="600"
+cy="230"
+r="40"
+fill="url(#glow)"
+/>
+
+
+<circle
+cx="850"
+cy="230"
+r="40"
+fill="url(#glow)"
+/>
+
+
+
+<!-- Title -->
+
+
+<text
+x="600"
+y="540"
+text-anchor="middle"
+font-family="Arial"
+font-size="32"
+font-weight="700"
+fill="white"
+letter-spacing="5"
+>
+
+CONNECTING EUROPE WITH THE WORLD
+
+</text>
+
+
+</svg>

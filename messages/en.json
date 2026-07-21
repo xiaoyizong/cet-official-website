@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Connecting Czech Heritage with the World",
+    "subtitle": "Premium European Cultural Trade"
+  }
+}
