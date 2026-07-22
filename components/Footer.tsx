@@ -1,272 +1,544 @@
 import Link from "next/link";
 
+
+
 export default function Footer() {
-  return (
-    <footer className="bg-[#0f2b4d] text-white">
 
-      <div className="max-w-7xl mx-auto px-6 py-16">
 
-        <div className="grid md:grid-cols-4 gap-12">
+return (
 
 
-          {/* Company */}
+<footer className="bg-[#0f2b4d] text-white">
 
-          <div>
 
-            <h2 className="
-              text-2xl
-              font-bold
-              tracking-wider
-            ">
-              CENTRAL EUROPE TRADING
-            </h2>
 
+<div className="
+max-w-7xl
+mx-auto
+px-6
+py-16
+">
 
-            <p className="
-              mt-4
-              text-gray-300
-              leading-7
-            ">
-              European Trade & Cultural Exchange.
-              Connecting Czech heritage,
-              premium products and global markets.
-            </p>
 
 
-          </div>
 
 
+<div className="
+grid
+md:grid-cols-4
+gap-12
+">
 
 
-          {/* Quick Links */}
 
-          <div>
 
-            <h3 className="
-              text-xl
-              font-semibold
-              text-yellow-400
-            ">
-              Quick Links
-            </h3>
 
 
-            <ul className="
-              mt-5
-              space-y-3
-              text-gray-300
-            ">
 
-              <li>
-                <Link
-                  href="/"
-                  className="hover:text-yellow-400 transition"
-                >
-                  Home
-                </Link>
-              </li>
 
+{/* Company */}
 
-              <li>
-                <Link
-                  href="/#about"
-                  className="hover:text-yellow-400 transition"
-                >
-                  About CET
-                </Link>
-              </li>
 
 
-              <li>
-                <Link
-                  href="/#products"
-                  className="hover:text-yellow-400 transition"
-                >
-                  Products
-                </Link>
-              </li>
+<div>
 
 
-              <li>
-                <Link
-                  href="/#global-network"
-                  className="hover:text-yellow-400 transition"
-                >
-                  Global Trade
-                </Link>
-              </li>
+<h2
 
+className="
+text-2xl
+font-bold
+tracking-wider
+"
 
-              <li>
-                <Link
-                  href="/#contact"
-                  className="hover:text-yellow-400 transition"
-                >
-                  Contact
-                </Link>
-              </li>
+>
 
+CENTRAL EUROPE TRADING
 
-            </ul>
+</h2>
 
-          </div>
 
 
 
+<p
 
+className="
+mt-5
+text-gray-300
+leading-8
+"
 
-          {/* Products */}
+>
 
-          <div>
+Central Europe Trading specializes in European sourcing,
+Czech crystal heritage, industrial supply chain solutions
+and international trade partnerships.
 
-            <h3 className="
-              text-xl
-              font-semibold
-              text-yellow-400
-            ">
-              Our Business
-            </h3>
+</p>
 
 
-            <ul className="
-              mt-5
-              space-y-3
-              text-gray-300
-            ">
 
 
-              <li>
-                Czech Crystal
-              </li>
+</div>
 
 
-              <li>
-                European Premium Products
-              </li>
 
 
-              <li>
-                Industrial Supply Chain
-              </li>
 
 
-              <li>
-                International Trade
-              </li>
 
 
-            </ul>
 
+{/* Navigation */}
 
-          </div>
 
 
+<div>
 
 
+<h3
 
-          {/* Contact */}
+className="
+text-xl
+font-semibold
+text-yellow-400
+"
 
-          <div>
+>
 
-            <h3 className="
-              text-xl
-              font-semibold
-              text-yellow-400
-            ">
-              Contact
-            </h3>
+Quick Links
 
+</h3>
 
-            <div className="
-              mt-5
-              space-y-4
-              text-gray-300
-            ">
 
 
-              <p>
-                📧
-                <span className="ml-2">
-                  info@centraleuropetrading.com
-                </span>
-              </p>
+<ul
 
+className="
+mt-5
+space-y-3
+text-gray-300
+"
 
-              <p>
-                📍
-                <span className="ml-2">
-                  Czech Republic
-                </span>
-              </p>
+>
 
 
-              <p>
-                🌍
-                <span className="ml-2">
-                  Europe & Global Markets
-                </span>
-              </p>
 
+<li>
 
-            </div>
+<Link
 
+href="/"
 
-          </div>
+className="
+hover:text-yellow-400
+transition
+"
 
+>
 
+Home
 
-        </div>
+</Link>
 
 
-      </div>
+</li>
 
 
 
 
+<li>
 
-      {/* Bottom */}
+<Link
 
-      <div className="
-        border-t
-        border-white/10
-      ">
+href="/#about"
 
+className="
+hover:text-yellow-400
+transition
+"
 
-        <div className="
-          max-w-7xl
-          mx-auto
-          px-6
-          py-6
-          flex
-          flex-col
-          md:flex-row
-          justify-between
-          items-center
-          text-sm
-          text-gray-400
-        ">
+>
 
+About CET
 
-          <p>
-            © 2026 CENTRAL EUROPE TRADING.
-            All Rights Reserved.
-          </p>
+</Link>
 
 
-          <p className="mt-3 md:mt-0">
+</li>
 
-            European Trade & Cultural Exchange
 
-          </p>
 
 
-        </div>
+<li>
 
+<Link
 
-      </div>
+href="/#products"
 
+className="
+hover:text-yellow-400
+transition
+"
 
+>
 
-    </footer>
-  );
+Products
+
+</Link>
+
+
+</li>
+
+
+
+
+<li>
+
+<Link
+
+href="/#global-network"
+
+className="
+hover:text-yellow-400
+transition
+"
+
+>
+
+Global Network
+
+</Link>
+
+
+</li>
+
+
+
+
+<li>
+
+<Link
+
+href="/#contact"
+
+className="
+hover:text-yellow-400
+transition
+"
+
+>
+
+Contact
+
+</Link>
+
+
+</li>
+
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* Business */}
+
+
+
+<div>
+
+
+
+<h3
+
+className="
+text-xl
+font-semibold
+text-yellow-400
+"
+
+>
+
+Our Business
+
+</h3>
+
+
+
+
+<ul
+
+className="
+mt-5
+space-y-3
+text-gray-300
+"
+
+>
+
+
+<li>
+Czech Crystal
+</li>
+
+
+<li>
+European Premium Products
+</li>
+
+
+<li>
+Industrial Supply Chain
+</li>
+
+
+<li>
+International Trade
+</li>
+
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* Contact */}
+
+
+
+<div>
+
+
+
+<h3
+
+className="
+text-xl
+font-semibold
+text-yellow-400
+"
+
+>
+
+Contact
+
+</h3>
+
+
+
+
+
+
+<div
+
+className="
+mt-5
+space-y-4
+text-gray-300
+"
+
+>
+
+
+
+<p>
+
+📧
+
+<a
+
+href="mailto:info@centraleuropetrading.com"
+
+className="
+ml-2
+hover:text-yellow-400
+transition
+"
+
+>
+
+info@centraleuropetrading.com
+
+</a>
+
+
+</p>
+
+
+
+
+
+<p>
+
+📍
+
+<span className="ml-2">
+
+Czech Republic
+
+</span>
+
+
+</p>
+
+
+
+
+
+
+<p>
+
+🌍
+
+<span className="ml-2">
+
+Europe & Global Markets
+
+</span>
+
+
+</p>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* Bottom */}
+
+
+
+
+<div
+
+className="
+border-t
+border-white/10
+"
+
+>
+
+
+
+
+<div
+
+className="
+max-w-7xl
+mx-auto
+px-6
+py-6
+
+flex
+flex-col
+md:flex-row
+
+justify-between
+items-center
+
+text-sm
+text-gray-400
+"
+
+>
+
+
+
+
+<p>
+
+© {new Date().getFullYear()}
+ CENTRAL EUROPE TRADING.
+ All Rights Reserved.
+
+</p>
+
+
+
+
+<p
+
+className="
+mt-3
+md:mt-0
+"
+
+>
+
+European Trade · Trusted Partnerships · Global Supply Chain
+
+</p>
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+</footer>
+
+
+);
+
+
 }
