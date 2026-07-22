@@ -15,620 +15,754 @@ type FormData = {
 };
 
 
+type StatusType = 
+| "success"
+| "error"
+| "";
+
+
 const initialForm: FormData = {
-  name: "",
-  company: "",
-  email: "",
-  phone: "",
-  country: "",
-  product: "",
-  message: "",
+
+  name:"",
+  company:"",
+  email:"",
+  phone:"",
+  country:"",
+  product:"",
+  message:"",
+
 };
 
 
 
-export default function Contact() {
+export default function Contact(){
 
 
-  const [form, setForm] = useState<FormData>(initialForm);
+const [form,setForm] =
+useState<FormData>(initialForm);
 
-  const [loading, setLoading] = useState(false);
 
-  const [status, setStatus] = useState("");
+const [loading,setLoading] =
+useState(false);
 
 
+const [status,setStatus] =
+useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement |
-      HTMLTextAreaElement |
-      HTMLSelectElement
-    >
-  ) => {
 
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+const [statusType,setStatusType] =
+useState<StatusType>("");
 
-  };
 
 
 
+const handleChange = (
+e:
+React.ChangeEvent<
+HTMLInputElement |
+HTMLTextAreaElement |
+HTMLSelectElement
+>
+)=>{
 
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+setForm({
 
-    e.preventDefault();
+...form,
 
+[e.target.name]:
+e.target.value,
 
-    setLoading(true);
+});
 
-    setStatus("");
 
+};
 
 
-    try {
 
 
-      const response = await fetch(
-        "/api/contact",
-        {
-          method: "POST",
 
-          headers: {
-            "Content-Type": "application/json",
-          },
 
-          body: JSON.stringify(form),
+const handleSubmit = async(
+e:React.FormEvent<HTMLFormElement>
+)=>{
 
-        }
-      );
 
+e.preventDefault();
 
 
-      const data = await response.json();
+if(loading)
+return;
 
 
 
-      if (data.success) {
+setLoading(true);
 
+setStatus("");
 
-        setStatus(
-          "Message sent successfully. We will contact you soon."
-        );
+setStatusType("");
 
 
-        setForm(initialForm);
 
+try{
 
-      } else {
 
+const response =
+await fetch(
+"/api/contact",
+{
 
-        setStatus(
-          "Failed to send message."
-        );
+method:"POST",
 
+headers:{
+"Content-Type":
+"application/json",
+},
 
-      }
+body:
+JSON.stringify(form),
 
+}
+);
 
 
-    } catch (error) {
 
+const data =
+await response.json();
 
-      console.error(error);
 
 
-      setStatus(
-        "Network error. Please try again."
-      );
 
+if(data.success){
 
-    }
 
+setStatus(
+"Message sent successfully. We will contact you soon."
+);
 
 
-    setLoading(false);
+setStatusType(
+"success"
+);
 
 
-  };
+setForm(
+initialForm
+);
 
 
 
+}
+else{
 
 
-  return (
+setStatus(
+"Failed to send message. Please try again."
+);
 
-    <section
-      id="contact"
-      className="
-      py-28
-      bg-gradient-to-b
-      from-gray-50
-      to-white
-      "
-    >
 
+setStatusType(
+"error"
+);
 
-      <div className="
-      max-w-7xl
-      mx-auto
-      px-6
-      ">
 
+}
 
 
-        <motion.div
 
-          initial={{
-            opacity:0,
-            y:30
-          }}
+}
 
-          whileInView={{
-            opacity:1,
-            y:0
-          }}
+catch(error){
 
-          viewport={{
-            once:true
-          }}
 
-          transition={{
-            duration:0.7
-          }}
+console.error(
+"Contact form error:",
+error
+);
 
-          className="text-center"
 
-        >
 
+setStatus(
+"Network error. Please try again later."
+);
 
-          <h2 className="
-          text-4xl
-          md:text-5xl
-          font-bold
-          text-[#0f2b4d]
-          ">
 
-            Contact Us
+setStatusType(
+"error"
+);
 
-          </h2>
 
 
+}
 
-          <p className="
-          mt-5
-          text-gray-600
-          text-lg
-          ">
 
-            We welcome long-term partnerships from customers around the world.
 
-          </p>
+finally{
 
 
+setLoading(false);
 
-        </motion.div>
 
+}
 
 
 
+};
 
 
-        <div className="
-        grid
-        lg:grid-cols-5
-        gap-10
-        mt-16
-        ">
 
 
 
 
+return (
 
-          {/* Left Information */}
+<section
+id="contact"
+className="
+py-28
+bg-gradient-to-b
+from-gray-50
+to-white
+"
+>
 
 
-          <div className="
-          lg:col-span-2
-          bg-[#0f2b4d]
-          rounded-3xl
-          p-10
-          text-white
-          ">
 
+<div
+className="
+max-w-7xl
+mx-auto
+px-6
+"
+>
 
-            <h3 className="
-            text-3xl
-            font-bold
-            ">
 
-              Let's Build Business Together
 
-            </h3>
 
+<motion.div
 
+initial={{
+opacity:0,
+y:30
+}}
 
-            <p className="
-            mt-6
-            text-gray-300
-            leading-8
-            ">
+whileInView={{
+opacity:1,
+y:0
+}}
 
-              European Trade, Czech Crystal,
-              Industrial Supply Chain and Global Partnership.
+viewport={{
+once:true
+}}
 
-            </p>
+transition={{
+duration:0.7
+}}
 
+className="
+text-center
+"
 
+>
 
-            <div className="
-            mt-10
-            space-y-6
-            ">
 
+<h2
+className="
+text-4xl
+md:text-5xl
+font-bold
+text-[#0f2b4d]
+"
+>
 
-              <p>
-                📧 info@centraleuropetrading.com
-              </p>
+Contact Us
 
+</h2>
 
-              <p>
-                📍 Czech Republic
-              </p>
 
+<p
+className="
+mt-5
+text-gray-600
+text-lg
+"
+>
 
-              <p>
-                🌍 Global Trade
-              </p>
+We welcome long-term partnerships from customers around the world.
 
+</p>
 
 
-            </div>
+</motion.div>
 
 
 
-          </div>
 
 
 
 
+<div
+className="
+grid
+lg:grid-cols-5
+gap-10
+mt-16
+"
+>
 
 
 
 
-          {/* Contact Form */}
 
+{/* Information */}
 
-          <div className="
-          lg:col-span-3
-          bg-white
-          rounded-3xl
-          shadow-xl
-          p-10
-          ">
 
+<div
+className="
+lg:col-span-2
+bg-[#0f2b4d]
+rounded-3xl
+p-10
+text-white
+"
+>
 
 
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-6"
-            >
+<h3
+className="
+text-3xl
+font-bold
+"
+>
 
+Let&apos;s Build Business Together
 
+</h3>
 
-              {
-                status && (
 
-                  <div className="
-                  bg-green-100
-                  text-green-700
-                  rounded-xl
-                  p-4
-                  ">
 
-                    {status}
+<p
+className="
+mt-6
+text-gray-300
+leading-8
+"
+>
 
-                  </div>
+European Trade,
+Czech Crystal,
+Industrial Supply Chain
+and Global Partnership.
 
-                )
-              }
+</p>
 
 
 
 
+<div
+className="
+mt-10
+space-y-6
+"
+>
 
 
-              <div className="
-              grid
-              md:grid-cols-2
-              gap-6
-              ">
+<p>
+📧 info@centraleuropetrading.com
+</p>
 
 
-                <input
+<p>
+📍 Czech Republic
+</p>
 
-                  name="name"
 
-                  value={form.name}
+<p>
+🌍 Global Trade
+</p>
 
-                  onChange={handleChange}
 
-                  required
+</div>
 
-                  placeholder="Full Name"
 
-                  className="
-                  border
-                  rounded-xl
-                  p-4
-                  outline-none
-                  focus:ring-2
-                  focus:ring-yellow-500
-                  "
 
-                />
+</div>
 
 
 
 
-                <input
 
-                  name="company"
 
-                  value={form.company}
 
-                  onChange={handleChange}
 
-                  placeholder="Company"
+{/* Form */}
 
-                  className="
-                  border
-                  rounded-xl
-                  p-4
-                  outline-none
-                  "
 
-                />
+<div
+className="
+lg:col-span-3
+bg-white
+rounded-3xl
+shadow-xl
+p-10
+"
+>
 
 
-              </div>
+<form
+onSubmit={handleSubmit}
+className="
+space-y-6
+"
+>
 
 
 
 
 
+{
+status && (
 
+<div
 
-              <div className="
-              grid
-              md:grid-cols-2
-              gap-6
-              ">
+className={`
+rounded-xl
+p-4
+font-medium
 
+${
+statusType==="success"
+?
+"bg-green-100 text-green-700"
+:
+"bg-red-100 text-red-700"
 
+}
 
-                <input
+`}
 
-                  type="email"
+>
 
-                  name="email"
+{status}
 
-                  value={form.email}
+</div>
 
-                  onChange={handleChange}
+)
 
-                  required
+}
 
-                  placeholder="Email Address"
 
-                  className="
-                  border
-                  rounded-xl
-                  p-4
-                  outline-none
-                  "
 
-                />
 
 
 
 
-                <input
+<div
+className="
+grid
+md:grid-cols-2
+gap-6
+"
+>
 
-                  name="phone"
 
-                  value={form.phone}
+<input
 
-                  onChange={handleChange}
+name="name"
 
-                  placeholder="Phone Number"
+value={form.name}
 
-                  className="
-                  border
-                  rounded-xl
-                  p-4
-                  "
+onChange={handleChange}
 
-                />
+required
 
+placeholder="Full Name"
 
-              </div>
+className="
+border
+rounded-xl
+p-4
+outline-none
+focus:ring-2
+focus:ring-yellow-500
+"
 
+/>
 
 
 
+<input
 
+name="company"
 
+value={form.company}
 
-              <div className="
-              grid
-              md:grid-cols-2
-              gap-6
-              ">
+onChange={handleChange}
 
+placeholder="Company"
 
-                <input
+className="
+border
+rounded-xl
+p-4
+outline-none
+"
 
-                  name="country"
+/>
 
-                  value={form.country}
 
-                  onChange={handleChange}
 
-                  placeholder="Country"
+</div>
 
-                  className="
-                  border
-                  rounded-xl
-                  p-4
-                  "
 
-                />
 
 
 
 
-                <select
 
-                  name="product"
 
-                  value={form.product}
 
-                  onChange={handleChange}
+<div
+className="
+grid
+md:grid-cols-2
+gap-6
+"
+>
 
-                  className="
-                  border
-                  rounded-xl
-                  p-4
-                  "
 
-                >
 
-                  <option value="">
-                    Product Interest
-                  </option>
+<input
 
+type="email"
 
-                  <option value="Czech Crystal">
-                    Czech Crystal
-                  </option>
+name="email"
 
+value={form.email}
 
-                  <option value="Industrial Supply">
-                    Industrial Supply
-                  </option>
+onChange={handleChange}
 
+required
 
-                  <option value="European Trade">
-                    European Trade
-                  </option>
+placeholder="Email Address"
 
+className="
+border
+rounded-xl
+p-4
+outline-none
+"
 
-                  <option value="Other">
-                    Other
-                  </option>
+/>
 
 
-                </select>
 
 
+<input
 
-              </div>
+name="phone"
 
+value={form.phone}
 
+onChange={handleChange}
 
+placeholder="Phone Number"
 
+className="
+border
+rounded-xl
+p-4
+"
 
+/>
 
 
-              <textarea
 
-                name="message"
+</div>
 
-                value={form.message}
 
-                onChange={handleChange}
 
-                required
 
-                rows={6}
 
-                placeholder="Tell us about your inquiry..."
 
-                className="
-                w-full
-                border
-                rounded-xl
-                p-4
-                resize-none
-                "
 
-              />
 
+<div
+className="
+grid
+md:grid-cols-2
+gap-6
+"
+>
 
 
 
+<input
 
+name="country"
 
+value={form.country}
 
-              <button
+onChange={handleChange}
 
-                type="submit"
+placeholder="Country"
 
-                disabled={loading}
+className="
+border
+rounded-xl
+p-4
+"
 
-                className="
-                w-full
-                bg-yellow-500
-                hover:bg-yellow-600
-                disabled:bg-gray-400
-                text-white
-                py-4
-                rounded-xl
-                font-semibold
-                transition
-                "
+/>
 
-              >
 
-                {
-                  loading
-                  ?
-                  "Sending..."
-                  :
-                  "Send Inquiry"
-                }
 
 
-              </button>
+<select
 
+name="product"
 
+value={form.product}
 
+onChange={handleChange}
 
-            </form>
+className="
+border
+rounded-xl
+p-4
+"
 
+>
 
 
-          </div>
+<option value="">
+Product Interest
+</option>
 
 
+<option value="Czech Crystal">
+Czech Crystal
+</option>
 
 
+<option value="Industrial Supply">
+Industrial Supply
+</option>
 
-        </div>
 
+<option value="European Trade">
+European Trade
+</option>
 
 
-      </div>
+<option value="Other">
+Other
+</option>
 
 
+</select>
 
-    </section>
 
-  );
+</div>
+
+
+
+
+
+
+
+<textarea
+
+name="message"
+
+value={form.message}
+
+onChange={handleChange}
+
+required
+
+rows={6}
+
+placeholder="Tell us about your inquiry..."
+
+className="
+w-full
+border
+rounded-xl
+p-4
+resize-none
+"
+
+/>
+
+
+
+
+
+
+
+
+
+<button
+
+type="submit"
+
+disabled={loading}
+
+className="
+w-full
+bg-yellow-500
+hover:bg-yellow-600
+disabled:bg-gray-400
+text-white
+py-4
+rounded-xl
+font-semibold
+transition
+"
+
+>
+
+
+{
+loading
+?
+"Sending..."
+:
+"Send Inquiry"
+}
+
+
+
+</button>
+
+
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+);
+
+
 
 }
