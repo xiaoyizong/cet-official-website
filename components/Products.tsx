@@ -26,73 +26,62 @@ type Product = {
 
 
 
+const products:Product[] = [
+
+  {
+    number:"01",
+
+    title:"Czech Crystal",
+
+    subtitle:"Czech Crystal Heritage",
+
+    image:"/images/crystal.jpg",
+
+    desc:
+    "Traditional Czech crystal craftsmanship combining European heritage, artistic design and exceptional quality.",
+
+    link:"/products/crystal",
+  },
 
 
-export default function Products(){
+  {
+    number:"02",
+
+    title:"European Premium Products",
+
+    subtitle:"European Fine Trade",
+
+    image:"/images/wine.jpg",
+
+    desc:
+    "Selected European products representing quality, culture and craftsmanship, connecting European suppliers with global markets.",
+
+    link:"/products/wine",
+  },
 
 
+  {
+    number:"03",
 
-const products:Product[]=[
+    title:"Industrial Supply Chain",
 
+    subtitle:"European Industrial Solutions",
 
-{
-number:"01",
+    image:"/images/industry.jpg",
 
-title:"Czech Crystal",
+    desc:
+    "Reliable industrial solutions from European manufacturers supporting global cooperation and stable supply networks.",
 
-subtitle:"Czech Crystal Heritage",
-
-image:"/images/crystal.jpg",
-
-desc:
-"Traditional Czech crystal craftsmanship combining European heritage, artistic design and exceptional quality.",
-
-link:"/products/crystal"
-
-},
-
-
-
-{
-number:"02",
-
-title:"European Premium Products",
-
-subtitle:"European Fine Trade",
-
-image:"/images/wine.jpg",
-
-desc:
-"Selected European products representing quality, culture and craftsmanship, connecting European suppliers with global markets.",
-
-link:"/products/wine"
-
-},
-
-
-
-{
-number:"03",
-
-title:"Industrial Supply Chain",
-
-subtitle:"European Industrial Solutions",
-
-image:"/images/industry.jpg",
-
-desc:
-"Reliable industrial solutions from European manufacturers supporting global cooperation and stable supply networks.",
-
-link:"/products/industry"
-
-}
-
-
+    link:"/products/industry",
+  },
 
 ];
 
 
 
+
+
+export default function Products(){
 
 
 return (
@@ -108,7 +97,6 @@ from-gray-50
 to-white
 "
 
-
 >
 
 
@@ -120,44 +108,50 @@ mx-auto
 px-6
 "
 
-
 >
 
 
 
 {/* Header */}
 
-
 <motion.div
 
 
 initial={{
+
 opacity:0,
+
 y:40
+
 }}
 
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
 
 
 viewport={{
+
 once:true
+
 }}
 
 
 transition={{
-duration:0.7
-}}
 
+duration:0.7
+
+}}
 
 
 className="
 text-center
 "
-
 
 >
 
@@ -171,7 +165,6 @@ tracking-[0.35em]
 uppercase
 text-sm
 "
-
 
 >
 
@@ -191,13 +184,11 @@ font-bold
 text-[#0f2b4d]
 "
 
-
 >
 
 Our Products
 
 </h2>
-
 
 
 
@@ -211,7 +202,6 @@ max-w-3xl
 mx-auto
 "
 
-
 >
 
 European Quality.
@@ -219,7 +209,6 @@ Global Supply.
 Trusted Partnership.
 
 </p>
-
 
 
 </motion.div>
@@ -230,7 +219,8 @@ Trusted Partnership.
 
 
 
-{/* Products Grid */}
+{/* Product Cards */}
+
 
 
 <div
@@ -242,13 +232,11 @@ gap-10
 mt-16
 "
 
-
 >
 
 
 {
 products.map((item,index)=>(
-
 
 
 <motion.div
@@ -266,7 +254,6 @@ y:60
 }}
 
 
-
 whileInView={{
 
 opacity:1,
@@ -276,7 +263,6 @@ y:0
 }}
 
 
-
 viewport={{
 
 once:true
@@ -284,15 +270,13 @@ once:true
 }}
 
 
-
 transition={{
 
 duration:0.6,
 
-delay:index*0.15
+delay:index * 0.15
 
 }}
-
 
 
 whileHover={{
@@ -307,7 +291,6 @@ y:-8
 
 
 <Link
-
 
 href={item.link}
 
@@ -344,9 +327,7 @@ duration-500
 >
 
 
-
 {/* Image */}
-
 
 <div
 
@@ -359,22 +340,21 @@ overflow-hidden
 >
 
 
-
 <Image
 
 
 src={item.image}
 
 
-alt={`${item.title} - Central Europe Trading`}
+alt={`${item.title} | CENTRAL EUROPE TRADING`}
 
 
 fill
 
 
 sizes="
-(max-width:768px)100vw,
-(max-width:1200px)50vw,
+(max-width:768px) 100vw,
+(max-width:1200px) 50vw,
 33vw
 "
 
@@ -393,8 +373,6 @@ group-hover:scale-110
 
 
 />
-
-
 
 
 
@@ -423,7 +401,6 @@ font-bold
 
 "
 
-
 >
 
 
@@ -433,8 +410,9 @@ font-bold
 </div>
 
 
-
 </div>
+
+
 
 
 
@@ -443,13 +421,11 @@ font-bold
 
 {/* Content */}
 
-
 <div
 
 className="
 p-8
 "
-
 
 >
 
@@ -462,13 +438,11 @@ font-bold
 text-[#0f2b4d]
 "
 
-
 >
 
 {item.title}
 
 </h3>
-
 
 
 
@@ -479,7 +453,6 @@ mt-2
 text-yellow-600
 font-medium
 "
-
 
 >
 
@@ -498,7 +471,6 @@ text-gray-600
 leading-7
 "
 
-
 >
 
 {item.desc}
@@ -508,30 +480,18 @@ leading-7
 
 
 
-
-
 <div
 
-
 className="
-
 mt-8
-
 flex
-
 items-center
-
 gap-3
-
 text-[#d4a017]
-
 font-semibold
-
 "
 
-
 >
-
 
 View Details
 
@@ -556,7 +516,6 @@ group-hover:translate-x-2
 />
 
 
-
 </div>
 
 
@@ -572,10 +531,8 @@ group-hover:translate-x-2
 </motion.div>
 
 
-
 ))
 }
-
 
 
 </div>
