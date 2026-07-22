@@ -1,49 +1,90 @@
 "use client";
 
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 
-type FormData = {
+
+type ContactFormData = {
+
   name:string;
+
   company:string;
+
   email:string;
+
   phone:string;
+
   country:string;
+
   product:string;
+
   message:string;
+
+};
+
+
+
+
+const initialForm:ContactFormData={
+
+name:"",
+
+company:"",
+
+email:"",
+
+phone:"",
+
+country:"",
+
+product:"",
+
+message:"",
+
 };
 
 
 
-const initialForm:FormData = {
 
-  name:"",
-  company:"",
-  email:"",
-  phone:"",
-  country:"",
-  product:"",
-  message:"",
 
-};
+type StatusType =
+"success"
+|
+"error"
+|
+"";
+
+
 
 
 
 export default function Contact(){
 
 
-const [form,setForm]=useState<FormData>(
-  initialForm
-);
+
+const [form,setForm]=
+useState<ContactFormData>({
+...initialForm
+});
 
 
-const [loading,setLoading]=useState(false);
+
+const [loading,setLoading]=
+useState(false);
 
 
-const [status,setStatus]=useState("");
 
-const [success,setSuccess]=useState(false);
+const [status,setStatus]=
+useState("");
+
+
+
+const [statusType,setStatusType]=
+useState<StatusType>("");
+
+
 
 
 
@@ -63,12 +104,18 @@ setForm({
 
 ...form,
 
-[e.target.name]:e.target.value
+[e.target.name]:
+
+e.target.value
 
 });
 
 
 }
+
+
+
+
 
 
 
@@ -83,16 +130,24 @@ e:React.FormEvent<HTMLFormElement>
 e.preventDefault();
 
 
+
+if(loading)return;
+
+
+
 setLoading(true);
 
 setStatus("");
+
+setStatusType("");
 
 
 
 try{
 
 
-const response = await fetch(
+const response =
+await fetch(
 "/api/contact",
 {
 
@@ -100,15 +155,30 @@ method:"POST",
 
 headers:{
 
-"Content-Type":"application/json"
+"Content-Type":
+
+"application/json"
 
 },
 
-body:JSON.stringify(form)
+
+body:
+
+JSON.stringify(form)
 
 }
 
 );
+
+
+
+
+
+const data =
+await response
+.json()
+.catch(()=>null);
+
 
 
 
@@ -123,16 +193,9 @@ throw new Error(
 
 
 
-const data = await response.json();
 
 
-
-
-
-if(data.success){
-
-
-setSuccess(true);
+if(data?.success){
 
 
 setStatus(
@@ -140,15 +203,18 @@ setStatus(
 );
 
 
+setStatusType(
+"success"
+);
 
-setForm(initialForm);
+
+setForm({
+...initialForm
+});
 
 
 
 }else{
-
-
-setSuccess(false);
 
 
 setStatus(
@@ -156,29 +222,43 @@ setStatus(
 );
 
 
+setStatusType(
+"error"
+);
+
+
 }
 
 
 
 
+}
 
-}catch(error){
-
-
-console.error(error);
+catch(error){
 
 
-setSuccess(false);
+console.error(
+"Contact form error:",
+error
+);
+
 
 
 setStatus(
-"Network error. Please try again."
+"Network error. Please try again later."
+);
+
+
+setStatusType(
+"error"
 );
 
 
 
 }
 
+
+finally{
 
 
 setLoading(false);
@@ -187,13 +267,17 @@ setLoading(false);
 }
 
 
+}
+
+
+
+
 
 
 
 
 
 return(
-
 
 <section
 
@@ -206,8 +290,8 @@ from-gray-50
 to-white
 "
 
-
 >
+
 
 
 <div
@@ -217,7 +301,6 @@ max-w-7xl
 mx-auto
 px-6
 "
-
 
 >
 
@@ -243,7 +326,9 @@ transition={{
 duration:0.7
 }}
 
-className="text-center"
+className="
+text-center
+"
 
 >
 
@@ -269,8 +354,8 @@ Contact Us
 
 className="
 mt-5
-text-gray-600
 text-lg
+text-gray-600
 "
 
 >
@@ -280,9 +365,7 @@ We welcome long-term partnerships from customers around the world.
 </p>
 
 
-
 </motion.div>
-
 
 
 
@@ -304,14 +387,6 @@ mt-16
 
 
 
-
-
-
-
-{/* LEFT */}
-
-
-
 <div
 
 className="
@@ -323,7 +398,6 @@ text-white
 "
 
 >
-
 
 
 <h3
@@ -341,7 +415,6 @@ Let's Build Business Together
 
 
 
-
 <p
 
 className="
@@ -352,12 +425,12 @@ leading-8
 
 >
 
-European Trade, Czech Crystal,
-Industrial Supply Chain and Global Partnership.
+European Trade,
+Czech Crystal,
+Industrial Supply Chain
+and Global Partnership.
 
 </p>
-
-
 
 
 
@@ -366,21 +439,18 @@ Industrial Supply Chain and Global Partnership.
 
 className="
 mt-10
-space-y-6
+space-y-5
 "
 
 >
-
 
 <p>
 📧 info@centraleuropetrading.com
 </p>
 
-
 <p>
 📍 Czech Republic
 </p>
-
 
 <p>
 🌍 Europe & Global Markets
@@ -390,7 +460,6 @@ space-y-6
 </div>
 
 
-
 </div>
 
 
@@ -399,10 +468,6 @@ space-y-6
 
 
 
-
-
-
-{/* FORM */}
 
 
 
@@ -419,7 +484,6 @@ p-10
 >
 
 
-
 <form
 
 onSubmit={handleSubmit}
@@ -432,8 +496,6 @@ space-y-6
 
 
 
-
-
 {
 status &&
 
@@ -442,8 +504,9 @@ status &&
 className={`
 rounded-xl
 p-4
+font-medium
 ${
-success
+statusType==="success"
 ?
 "bg-green-100 text-green-700"
 :
@@ -455,7 +518,6 @@ success
 
 {status}
 
-
 </div>
 
 }
@@ -464,9 +526,6 @@ success
 
 
 
-
-
-
 <div
 
 className="
@@ -478,23 +537,47 @@ gap-6
 >
 
 
+{
+[
+["name","Full Name"],
+["company","Company"],
+["email","Email Address"],
+["phone","Phone Number"],
+["country","Country"]
+
+].map(([name,placeholder])=>(
+
 
 <input
 
-name="name"
+key={name}
 
-value={form.name}
+name={name}
+
+value={
+form[name as keyof ContactFormData]
+}
 
 onChange={handleChange}
 
-required
+placeholder={placeholder}
 
-placeholder="Full Name"
+required={name==="name"||name==="email"}
+
+type={
+name==="email"
+?
+"email"
+:
+"text"
+}
 
 className="
+w-full
 border
 rounded-xl
-p-4
+px-4
+py-3
 outline-none
 focus:ring-2
 focus:ring-yellow-500
@@ -503,149 +586,10 @@ focus:ring-yellow-500
 />
 
 
+))
 
 
-
-<input
-
-name="company"
-
-value={form.company}
-
-onChange={handleChange}
-
-placeholder="Company"
-
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
-
-/>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div
-
-className="
-grid
-md:grid-cols-2
-gap-6
-"
-
->
-
-
-<input
-
-type="email"
-
-name="email"
-
-value={form.email}
-
-onChange={handleChange}
-
-required
-
-placeholder="Email Address"
-
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
-
-/>
-
-
-
-
-<input
-
-name="phone"
-
-value={form.phone}
-
-onChange={handleChange}
-
-placeholder="Phone Number"
-
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
-
-/>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-<div
-
-className="
-grid
-md:grid-cols-2
-gap-6
-"
-
->
-
-
-<input
-
-name="country"
-
-value={form.country}
-
-onChange={handleChange}
-
-placeholder="Country"
-
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
-
-/>
-
-
-
+}
 
 
 
@@ -658,10 +602,14 @@ value={form.product}
 onChange={handleChange}
 
 className="
+w-full
 border
 rounded-xl
-p-4
+px-4
+py-3
 outline-none
+focus:ring-2
+focus:ring-yellow-500
 "
 
 >
@@ -702,10 +650,6 @@ Other
 
 
 
-
-
-
-
 <textarea
 
 name="message"
@@ -713,8 +657,6 @@ name="message"
 value={form.message}
 
 onChange={handleChange}
-
-required
 
 rows={6}
 
@@ -724,9 +666,10 @@ className="
 w-full
 border
 rounded-xl
-p-4
-resize-none
+px-4
+py-3
 outline-none
+resize-none
 focus:ring-2
 focus:ring-yellow-500
 "
@@ -738,13 +681,13 @@ focus:ring-yellow-500
 
 
 
-
-
 <button
+
+type="submit"
 
 disabled={loading}
 
-type="submit"
+aria-label="Send business inquiry"
 
 className="
 w-full
@@ -758,9 +701,7 @@ font-semibold
 transition
 "
 
-
 >
-
 
 {
 loading
@@ -776,6 +717,7 @@ loading
 
 
 
+
 </form>
 
 
@@ -784,17 +726,16 @@ loading
 
 
 
-
 </div>
 
 
 
 
 </div>
+
 
 
 </section>
-
 
 );
 

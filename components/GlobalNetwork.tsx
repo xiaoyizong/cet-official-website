@@ -6,11 +6,25 @@ import { motion } from "framer-motion";
 
 
 
+type Market = {
+
+  icon:string;
+
+  country:string;
+
+  description:string;
+
+};
+
+
+
+
+
 export default function GlobalNetwork(){
 
 
 
-const markets=[
+const markets:Market[]=[
 
 
 {
@@ -79,7 +93,9 @@ return(
 
 <section
 
+
 id="global-network"
+
 
 className="
 py-28
@@ -115,24 +131,37 @@ px-6
 
 
 initial={{
+
 opacity:0,
+
 y:30
+
 }}
+
 
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
+
 
 
 viewport={{
+
 once:true
+
 }}
 
 
+
 transition={{
+
 duration:0.7
+
 }}
 
 
@@ -142,6 +171,7 @@ text-center
 "
 
 >
+
 
 
 <h2
@@ -157,6 +187,9 @@ font-bold
 Global Network
 
 </h2>
+
+
+
 
 
 
@@ -178,6 +211,7 @@ premium products and international trade solutions.
 </p>
 
 
+
 </motion.div>
 
 
@@ -188,8 +222,8 @@ premium products and international trade solutions.
 
 
 
+{/* World Map */}
 
-{/* Map */}
 
 
 
@@ -197,75 +231,92 @@ premium products and international trade solutions.
 
 
 initial={{
+
 opacity:0,
+
 scale:0.95
+
 }}
+
 
 
 whileInView={{
+
 opacity:1,
+
 scale:1
+
 }}
+
 
 
 viewport={{
+
 once:true
+
 }}
 
 
+
 transition={{
+
 duration:0.8
+
 }}
 
 
 
 className="
-
 mt-16
-
 relative
-
 rounded-3xl
-
 bg-white/5
-
 border
-
 border-white/10
-
 backdrop-blur-md
-
 p-6
-
 md:p-10
-
 overflow-hidden
-
 "
-
 
 >
 
 
 
-
-
 <Image
+
 
 src="/images/world-map.svg"
 
-alt="Global Trade Network Map"
+
+alt="Central Europe Trading global network map"
+
 
 width={1200}
 
+
 height={600}
+
+
+sizes="
+(max-width:768px)100vw,
+1200px
+"
+
+
+priority
+
 
 className="
 w-full
 opacity-70
 "
 
- />
+
+
+
+/>
+
 
 
 
@@ -276,6 +327,7 @@ opacity-70
 {/* Europe Point */}
 
 
+
 <motion.div
 
 
@@ -284,6 +336,7 @@ animate={{
 scale:[1,1.4,1]
 
 }}
+
 
 
 transition={{
@@ -295,28 +348,20 @@ repeat:Infinity
 }}
 
 
+
 className="
-
 absolute
-
 left-[31%]
-
 top-[43%]
-
 w-4
-
 h-4
-
 rounded-full
-
 bg-yellow-400
-
 shadow-[0_0_20px_#facc15]
-
 "
 
-
 />
+
 
 
 
@@ -327,6 +372,8 @@ shadow-[0_0_20px_#facc15]
 {/* Asia Point */}
 
 
+
+
 <motion.div
 
 
@@ -335,6 +382,7 @@ animate={{
 scale:[1,1.4,1]
 
 }}
+
 
 
 transition={{
@@ -348,26 +396,17 @@ delay:1
 }}
 
 
+
 className="
-
 absolute
-
 left-[70%]
-
 top-[45%]
-
 w-4
-
 h-4
-
 rounded-full
-
 bg-yellow-400
-
 shadow-[0_0_20px_#facc15]
-
 "
-
 
 />
 
@@ -379,7 +418,9 @@ shadow-[0_0_20px_#facc15]
 
 
 
-{/* Route Line */}
+
+{/* Trade Route */}
+
 
 
 
@@ -388,13 +429,10 @@ shadow-[0_0_20px_#facc15]
 
 animate={{
 
-opacity:[
-0.3,
-1,
-0.3
-]
+opacity:[0.3,1,0.3]
 
 }}
+
 
 
 transition={{
@@ -406,28 +444,22 @@ repeat:Infinity
 }}
 
 
+
 className="
-
 absolute
-
 left-[34%]
-
 top-[45%]
-
 w-[32%]
-
-h-[2px]
-
+h-[3px]
 bg-yellow-400
-
 rounded-full
-
 shadow-[0_0_15px_#facc15]
-
 "
 
-
 />
+
+
+
 
 
 
@@ -441,46 +473,40 @@ shadow-[0_0_15px_#facc15]
 
 
 
+{/* Markets Cards */}
 
-
-
-
-{/* Market Cards */}
 
 
 
 <div
 
+
 className="
-
 grid
-
 md:grid-cols-2
-
 lg:grid-cols-3
-
 gap-8
-
 mt-16
-
 "
 
 >
 
 
+
+
 {
 
+markets.map((item,index)=>(
 
-markets.map(
-
-(item,index)=>(
 
 
 
 <motion.div
 
 
+
 key={item.country}
+
 
 
 initial={{
@@ -520,6 +546,7 @@ delay:index*0.1
 }}
 
 
+
 whileHover={{
 
 y:-8
@@ -527,24 +554,16 @@ y:-8
 }}
 
 
+
 className="
-
 rounded-2xl
-
 bg-white/10
-
 border
-
 border-white/10
-
 p-8
-
 backdrop-blur-md
-
 shadow-xl
-
 "
-
 
 >
 
@@ -564,6 +583,10 @@ text-4xl
 
 
 
+
+
+
+
 <h3
 
 className="
@@ -577,6 +600,10 @@ font-bold
 {item.country}
 
 </h3>
+
+
+
+
 
 
 
@@ -597,21 +624,22 @@ leading-7
 
 
 
+
 </motion.div>
 
 
 
-)
-
-
-)
+))
 
 
 }
 
 
 
+
 </div>
+
+
 
 
 
@@ -624,7 +652,9 @@ leading-7
 </section>
 
 
+
 );
+
 
 
 }

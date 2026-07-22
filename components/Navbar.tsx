@@ -1,5 +1,6 @@
 "use client";
 
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -8,741 +9,837 @@ import { AnimatePresence, motion } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 
-export default function Navbar() {
 
+export default function Navbar(){
 
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  const [scrolled, setScrolled] = useState(false);
 
+const [menuOpen,setMenuOpen]=useState(false);
 
+const [scrolled,setScrolled]=useState(false);
 
-  // =========================
-  // Scroll Detection
-  // =========================
 
-  useEffect(() => {
 
-    const handleScroll = () => {
 
-      setScrolled(window.scrollY > 60);
 
-    };
+// =====================
+// Scroll Detection
+// =====================
 
+useEffect(()=>{
 
-    handleScroll();
 
+const handleScroll=()=>{
 
-    window.addEventListener(
-      "scroll",
-      handleScroll
-    );
+setScrolled(
+window.scrollY > 60
+);
 
+};
 
-    return () => {
 
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+handleScroll();
 
-    };
 
+window.addEventListener(
+"scroll",
+handleScroll
+);
 
-  }, []);
 
 
+return()=>{
 
+window.removeEventListener(
+"scroll",
+handleScroll
+);
 
+};
 
-  // =========================
-  // Lock Scroll
-  // =========================
 
-  useEffect(() => {
+},[]);
 
 
-    document.body.style.overflow =
-      menuOpen
-        ? "hidden"
-        : "auto";
 
 
-    return () => {
 
-      document.body.style.overflow =
-        "auto";
 
-    };
 
 
-  }, [menuOpen]);
+// =====================
+// Lock Body Scroll
+// =====================
 
 
+useEffect(()=>{
 
 
+document.body.style.overflow =
+menuOpen
+?
+"hidden"
+:
+"";
 
 
 
-  const navLinks = [
+return()=>{
 
-    {
-      name:"HOME",
-      href:"/",
-    },
+document.body.style.overflow="";
 
+};
 
-    {
-      name:"ABOUT",
-      href:"/#about",
-    },
 
+},[menuOpen]);
 
-    {
-      name:"PRODUCTS",
-      href:"/#products",
-    },
 
 
-    {
-      name:"GLOBAL TRADE",
-      href:"/#global-network",
-    },
 
 
-    {
-      name:"CONTACT",
-      href:"/#contact",
-    },
 
-  ];
 
 
 
 
+// =====================
+// ESC Close Menu
+// =====================
 
 
-  return (
+useEffect(()=>{
 
-    <>
 
+const handleKey=(e:KeyboardEvent)=>{
 
 
-      {/* ================= HEADER ================= */}
+if(
+e.key==="Escape"
+){
 
+setMenuOpen(false);
 
-      <header
+}
 
-        className={`
-        
-        fixed
-        top-0
-        left-0
-        w-full
-        z-50
 
-        transition-all
-        duration-500
+};
 
 
-        ${
-          scrolled
 
-          ?
+window.addEventListener(
+"keydown",
+handleKey
+);
 
-          `
-          bg-[#0f2b4d]/95
-          backdrop-blur-xl
-          shadow-2xl
-          border-b
-          border-white/10
-          `
 
 
-          :
+return()=>{
 
-          `
-          bg-[#0f2b4d]/70
-          backdrop-blur-md
-          `
 
-        }
+window.removeEventListener(
+"keydown",
+handleKey
+);
 
-        `}
 
-      >
+};
 
 
+},[]);
 
 
-        <div
 
-          className="
-          max-w-7xl
-          mx-auto
-          px-6
-          md:px-8
-          flex
-          items-center
-          justify-between
 
-          "
 
-        >
 
 
 
 
 
-          {/* ================= LOGO ================= */}
+const navLinks=[
 
 
+{
+name:"HOME",
+href:"/",
+},
 
-          <Link
 
-            href="/"
+{
+name:"ABOUT",
+href:"/#about",
+},
 
-            className="
-            flex
-            items-center
-            "
 
-          >
+{
+name:"PRODUCTS",
+href:"/#products",
+},
 
 
+{
+name:"GLOBAL TRADE",
+href:"/#global-network",
+},
 
-            <Image
 
-              src="/logo.svg"
+{
+name:"CONTACT",
+href:"/#contact",
+},
 
-              alt="
-              Central Europe Trading Logo
-              "
 
-              width={260}
+];
 
-              height={70}
 
 
-              priority
 
 
-              className={`
-              
-              object-contain
 
-              transition-all
-              duration-500
 
 
-              ${
-                scrolled
 
-                ?
+return(
 
-                "h-10 md:h-12"
 
-                :
+<>
 
-                "h-14 md:h-16"
 
-              }
+<header
 
-              w-auto
 
-              `}
+className={`
+fixed
+top-0
+left-0
+w-full
+h-20
+z-50
 
+transition-all
+duration-500
 
-            />
 
+${
+scrolled
 
+?
 
-          </Link>
+`
+bg-[#0f2b4d]/95
+backdrop-blur-xl
+shadow-xl
+border-b
+border-white/10
+`
 
+:
 
+`
+bg-[#0f2b4d]/70
+backdrop-blur-md
+`
 
+}
 
+`}
 
 
+>
 
 
 
-          {/* ================= DESKTOP NAV ================= */}
 
+<div
 
+className="
+max-w-7xl
+mx-auto
+px-6
+h-full
+flex
+items-center
+justify-between
+"
 
+>
 
-          <nav
 
-            className="
-            hidden
-            md:flex
-            items-center
-            gap-8
 
-            "
 
-          >
 
+{/* Logo */}
 
 
+<Link
 
-          {
-            navLinks.map((item)=>(
 
+href="/"
 
-              <Link
+className="
+flex
+items-center
+"
 
-                key={item.name}
+>
 
-                href={item.href}
 
+<Image
 
-                className="
 
-                text-white
+src="/logo.svg"
 
-                text-sm
 
-                font-semibold
+alt="Central Europe Trading Logo"
 
 
-                tracking-wide
+width={260}
 
 
-                transition-all
+height={70}
 
-                duration-300
 
+priority
 
-                hover:text-yellow-400
 
+className={`
 
-                relative
+object-contain
 
+transition-all
+duration-500
 
-                after:absolute
 
-                after:left-0
+${
+scrolled
 
-                after:-bottom-2
+?
 
-                after:h-[2px]
+"h-10 md:h-12"
 
-                after:w-0
+:
 
-                after:bg-yellow-400
+"h-14 md:h-16"
 
+}
 
-                after:transition-all
 
+w-auto
 
-                hover:after:w-full
+`}
 
 
-                "
+/>
 
 
-              >
 
+</Link>
 
-                {item.name}
 
 
-              </Link>
 
 
 
-            ))
-          }
 
 
 
+{/* Desktop Menu */}
 
 
-          <LanguageSwitcher />
 
+<nav
 
 
+className="
+hidden
+md:flex
+items-center
+gap-8
+"
 
-          </nav>
+>
 
 
 
+{
 
 
+navLinks.map(item=>(
 
 
+<Link
 
 
-          {/* ================= MOBILE BUTTON ================= */}
+key={item.name}
 
 
+href={item.href}
 
-          <button
 
+className="
 
-            onClick={()=>setMenuOpen(true)}
+relative
 
+text-white
 
-            className="
-            md:hidden
-            text-white
-            "
+text-sm
 
-            aria-label="Open Menu"
+font-semibold
 
+tracking-wide
 
-          >
+transition
 
+hover:text-yellow-400
 
-            <Menu size={32}/>
 
+after:absolute
 
-          </button>
+after:left-0
 
+after:-bottom-2
 
+after:h-[2px]
 
+after:w-0
 
+after:bg-yellow-400
 
-        </div>
+after:transition-all
 
+hover:after:w-full
 
+"
 
 
-      </header>
+>
 
 
+{item.name}
 
 
+</Link>
 
 
+))
 
 
+}
 
 
 
 
-      {/* ================= MOBILE DRAWER ================= */}
+<LanguageSwitcher />
 
 
 
+</nav>
 
 
-      <AnimatePresence>
 
 
-      {
 
-      menuOpen && (
 
 
-      <>
 
 
+{/* Mobile Button */}
 
-      {/* Overlay */}
 
 
+<button
 
-      <motion.div
 
+className="
+md:hidden
+text-white
+"
 
-        initial={{
-          opacity:0
-        }}
 
+aria-label="Open mobile menu"
 
-        animate={{
-          opacity:1
-        }}
 
+onClick={()=>setMenuOpen(true)}
 
-        exit={{
-          opacity:0
-        }}
 
+>
 
-        className="
-        fixed
-        inset-0
-        bg-black/60
-        backdrop-blur-sm
-        z-40
-        "
 
+<Menu size={32}/>
 
-        onClick={()=>setMenuOpen(false)}
 
+</button>
 
-      />
 
 
 
 
 
+</div>
 
 
 
 
-      {/* Menu Panel */}
+</header>
 
 
 
-      <motion.aside
 
 
-        initial={{
-          x:"100%"
-        }}
 
 
-        animate={{
-          x:0
-        }}
 
 
-        exit={{
-          x:"100%"
-        }}
 
 
-        transition={{
-          duration:0.35
-        }}
 
+{/* Mobile Menu */}
 
 
-        className="
 
-        fixed
+<AnimatePresence>
 
-        right-0
 
-        top-0
+{
 
-        h-screen
 
-        w-80
+menuOpen && (
 
 
-        bg-[#0f2b4d]
 
+<>
 
-        z-50
 
 
-        shadow-2xl
+{/* Overlay */}
 
 
-        p-8
+<motion.div
 
-        "
 
+initial={{
+opacity:0
+}}
 
-      >
 
+animate={{
+opacity:1
+}}
 
 
+exit={{
+opacity:0
+}}
 
 
-      <div
+className="
+fixed
+inset-0
+bg-black/60
+backdrop-blur-sm
+z-40
+"
 
-        className="
-        flex
-        justify-between
-        items-center
-        "
 
-      >
+onClick={()=>setMenuOpen(false)}
 
 
+/>
 
-        <Image
 
-          src="/logo.svg"
 
-          alt="CET"
 
-          width={180}
 
-          height={50}
 
-          className="
-          w-auto
-          h-10
-          "
 
-        />
 
+{/* Drawer */}
 
 
 
-        <button
+<motion.aside
 
-          onClick={()=>setMenuOpen(false)}
 
-          className="
-          text-white
-          "
+initial={{
+x:"100%"
+}}
 
-        >
 
-          <X size={32}/>
+animate={{
+x:0
+}}
 
 
-        </button>
+exit={{
+x:"100%"
+}}
 
 
+transition={{
+duration:0.35
+}}
 
 
-      </div>
+className="
 
+fixed
 
+right-0
 
+top-0
 
+h-screen
 
+w-80
 
+bg-[#0f2b4d]
 
+z-50
 
+shadow-2xl
 
-      <nav
+p-8
 
-        className="
-        mt-12
-        space-y-6
+"
 
-        "
 
-      >
+>
 
 
 
-      {
-        navLinks.map((item,index)=>(
 
 
-          <motion.div
 
-          key={item.name}
 
+<div
 
-          initial={{
-            opacity:0,
-            x:30
-          }}
+className="
+flex
+items-center
+justify-between
+"
 
+>
 
-          animate={{
-            opacity:1,
-            x:0
-          }}
 
+<Image
 
-          transition={{
-            delay:index*0.08
-          }}
 
+src="/logo.svg"
 
-          >
 
+alt="Central Europe Trading"
 
-          <Link
 
+width={180}
 
-            href={item.href}
 
+height={50}
 
-            onClick={()=>setMenuOpen(false)}
 
+className="
+h-10
+w-auto
+"
 
-            className="
 
-            block
+/>
 
-            text-white
 
-            text-lg
 
-            font-semibold
+<button
 
 
-            hover:text-yellow-400
+aria-label="Close mobile menu"
 
 
-            transition
+onClick={()=>setMenuOpen(false)}
 
 
-            "
+className="
+text-white
+"
 
 
-          >
+>
 
 
-          {item.name}
+<X size={32}/>
 
 
-          </Link>
+</button>
 
 
+</div>
 
-          </motion.div>
 
 
-        ))
-      }
 
 
 
 
 
-      </nav>
 
+<nav
 
 
+className="
+mt-12
+space-y-6
+"
 
 
+>
 
 
-      <div
+{
 
-      className="
-      mt-12
-      "
 
-      >
+navLinks.map(
 
-      <LanguageSwitcher />
+(item,index)=>(
 
 
-      </div>
 
+<motion.div
 
 
+key={item.name}
 
 
+initial={{
 
-      </motion.aside>
+opacity:0,
 
+x:30
 
+}}
 
-      </>
 
+animate={{
 
+opacity:1,
 
-      )
+x:0
 
+}}
 
-      }
 
+transition={{
 
+delay:index*0.08
 
-      </AnimatePresence>
+}}
 
 
+>
 
-    </>
 
-  );
+
+<Link
+
+
+href={item.href}
+
+
+onClick={()=>setMenuOpen(false)}
+
+
+className="
+
+block
+
+text-white
+
+text-lg
+
+font-semibold
+
+hover:text-yellow-400
+
+transition
+
+"
+
+
+>
+
+
+{item.name}
+
+
+</Link>
+
+
+</motion.div>
+
+
+)
+
+
+)
+
+
+}
+
+
+
+
+</nav>
+
+
+
+
+
+
+
+<div
+
+className="
+mt-12
+"
+
+
+>
+
+
+<LanguageSwitcher />
+
+
+</div>
+
+
+
+
+
+
+
+
+</motion.aside>
+
+
+
+
+
+</>
+
+
+
+)
+
+
+}
+
+
+
+</AnimatePresence>
+
+
+
+</>
+
+
+);
+
 
 }
