@@ -1,70 +1,377 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+
+
+
+const SITE_URL =
+  "https://www.centraleuropetrading.com";
+
+
+
+
 
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
 
-return [
 
-{
-
-url:
-"https://www.centraleuropetrading.com",
-
-lastModified:
-new Date(),
+  const lastModified = new Date();
 
 
-priority:
-1,
 
 
-},
+
+  return [
 
 
-{
-
-url:
-"https://www.centraleuropetrading.com/products/crystal",
-
-lastModified:
-new Date(),
-
-priority:
-0.8,
-
-},
 
 
-{
-
-url:
-"https://www.centraleuropetrading.com/products/wine",
-
-lastModified:
-new Date(),
-
-priority:
-0.8,
-
-},
+    // =========================
+    // English Homepage
+    // =========================
 
 
-{
-
-url:
-"https://www.centraleuropetrading.com/products/industry",
-
-lastModified:
-new Date(),
-
-priority:
-0.8,
-
-},
+    {
 
 
-];
+      url:
+
+        SITE_URL,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "weekly",
+
+
+      priority:
+
+        1,
+
+
+
+    },
+
+
+
+
+
+
+
+    // =========================
+    // Chinese Homepage
+    // =========================
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/zh`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "weekly",
+
+
+      priority:
+
+        1,
+
+
+
+    },
+
+
+
+
+
+
+
+
+    // =========================
+    // Products
+    // =========================
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/products/crystal`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.9,
+
+
+
+    },
+
+
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/products/wine`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.9,
+
+
+
+    },
+
+
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/products/industry`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.9,
+
+
+
+    },
+
+
+
+
+
+
+
+
+    // =========================
+    // Business Pages
+    // =========================
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/about`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.8,
+
+
+
+    },
+
+
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/global-trade`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.8,
+
+
+
+    },
+
+
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/contact`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.8,
+
+
+
+    },
+
+
+
+
+
+
+
+
+    // =========================
+    // Chinese Pages
+    // =========================
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/zh/products/crystal`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.8,
+
+
+
+    },
+
+
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/zh/products/wine`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.8,
+
+
+
+    },
+
+
+
+
+
+    {
+
+
+      url:
+
+        `${SITE_URL}/zh/products/industry`,
+
+
+      lastModified,
+
+
+      changeFrequency:
+
+        "monthly",
+
+
+      priority:
+
+        0.8,
+
+
+
+    },
+
+
+
+  ];
+
 
 
 }

@@ -1,41 +1,62 @@
 "use client";
 
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 
+
 type FormData = {
+
   name:string;
+
   company:string;
+
   email:string;
+
   phone:string;
+
   country:string;
+
   product:string;
+
   message:string;
-};
-
-
-
-const initialForm:FormData = {
-
-  name:"",
-  company:"",
-  email:"",
-  phone:"",
-  country:"",
-  product:"",
-  message:"",
 
 };
 
 
 
-export default function Contact(){
 
 
-const [form,setForm]=useState<FormData>(
-  initialForm
-);
+const initialForm:FormData={
+
+name:"",
+
+company:"",
+
+email:"",
+
+phone:"",
+
+country:"",
+
+product:"",
+
+message:""
+
+};
+
+
+
+
+
+
+
+export default function ContactZh(){
+
+
+
+const [form,setForm]=useState<FormData>(initialForm);
 
 
 const [loading,setLoading]=useState(false);
@@ -43,20 +64,23 @@ const [loading,setLoading]=useState(false);
 
 const [status,setStatus]=useState("");
 
-const [success,setSuccess]=useState(false);
 
 
 
 
 
-function handleChange(
-e:
-React.ChangeEvent<
+
+const handleChange=(
+
+e:React.ChangeEvent<
+
 HTMLInputElement |
+
 HTMLTextAreaElement |
-HTMLSelectElement
->
-){
+
+HTMLSelectElement>
+
+)=>{
 
 
 setForm({
@@ -68,16 +92,21 @@ setForm({
 });
 
 
-}
+};
 
 
 
 
 
 
-async function handleSubmit(
+
+
+
+const handleSubmit=async(
+
 e:React.FormEvent<HTMLFormElement>
-){
+
+)=>{
 
 
 e.preventDefault();
@@ -89,11 +118,14 @@ setStatus("");
 
 
 
+
 try{
 
 
-const response = await fetch(
+const response=await fetch(
+
 "/api/contact",
+
 {
 
 method:"POST",
@@ -104,27 +136,18 @@ headers:{
 
 },
 
+
 body:JSON.stringify(form)
 
 }
 
+
 );
 
 
 
 
-if(!response.ok){
-
-throw new Error(
-"Server error"
-);
-
-}
-
-
-
-const data = await response.json();
-
+const data=await response.json();
 
 
 
@@ -132,13 +155,9 @@ const data = await response.json();
 if(data.success){
 
 
-setSuccess(true);
-
-
 setStatus(
-"Message sent successfully. We will contact you soon."
+"发送成功，我们会尽快联系您。"
 );
-
 
 
 setForm(initialForm);
@@ -148,16 +167,12 @@ setForm(initialForm);
 }else{
 
 
-setSuccess(false);
-
-
 setStatus(
-"Failed to send message. Please try again."
+"发送失败，请稍后重试。"
 );
 
 
 }
-
 
 
 
@@ -168,13 +183,9 @@ setStatus(
 console.error(error);
 
 
-setSuccess(false);
-
-
 setStatus(
-"Network error. Please try again."
+"网络错误，请稍后重试。"
 );
-
 
 
 }
@@ -184,7 +195,9 @@ setStatus(
 setLoading(false);
 
 
-}
+};
+
+
 
 
 
@@ -195,27 +208,38 @@ setLoading(false);
 return(
 
 
+
 <section
 
 id="contact"
 
 className="
+
 py-28
+
 bg-gradient-to-b
+
 from-gray-50
+
 to-white
+
 "
 
 
 >
+
 
 
 <div
 
 className="
+
 max-w-7xl
+
 mx-auto
+
 px-6
+
 "
 
 
@@ -223,27 +247,54 @@ px-6
 
 
 
+
+
+
+{/* Title */}
+
+
+
 <motion.div
 
+
 initial={{
+
 opacity:0,
+
 y:30
+
 }}
+
+
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
+
+
 
 viewport={{
+
 once:true
+
 }}
+
+
 
 transition={{
+
 duration:0.7
+
 }}
 
+
+
 className="text-center"
+
 
 >
 
@@ -251,15 +302,20 @@ className="text-center"
 <h2
 
 className="
+
 text-4xl
+
 md:text-5xl
+
 font-bold
+
 text-[#0f2b4d]
+
 "
 
 >
 
-Contact Us
+联系我们
 
 </h2>
 
@@ -268,14 +324,18 @@ Contact Us
 <p
 
 className="
+
 mt-5
+
 text-gray-600
+
 text-lg
+
 "
 
 >
 
-We welcome long-term partnerships from customers around the world.
+欢迎全球企业与我们建立长期合作关系
 
 </p>
 
@@ -293,12 +353,19 @@ We welcome long-term partnerships from customers around the world.
 
 <div
 
+
 className="
+
 grid
+
 lg:grid-cols-5
+
 gap-10
+
 mt-16
+
 "
+
 
 >
 
@@ -308,52 +375,66 @@ mt-16
 
 
 
-{/* LEFT */}
+
+{/* Left */}
 
 
 
 <div
 
+
 className="
+
 lg:col-span-2
+
 bg-[#0f2b4d]
+
 rounded-3xl
+
 p-10
+
 text-white
+
 "
 
->
 
+>
 
 
 <h3
 
 className="
+
 text-3xl
+
 font-bold
+
 "
 
 >
 
-Let's Build Business Together
+携手共创国际贸易未来
 
 </h3>
-
 
 
 
 <p
 
 className="
+
 mt-6
+
 text-gray-300
+
 leading-8
+
 "
 
 >
 
-European Trade, Czech Crystal,
-Industrial Supply Chain and Global Partnership.
+我们专注欧洲优质产品、
+国际供应链合作以及全球贸易服务。
 
 </p>
 
@@ -365,8 +446,11 @@ Industrial Supply Chain and Global Partnership.
 <div
 
 className="
+
 mt-10
-space-y-6
+
+space-y-5
+
 "
 
 >
@@ -383,37 +467,45 @@ space-y-6
 
 
 <p>
-🌍 Europe & Global Markets
+🌍 Global Trade
 </p>
 
 
-</div>
-
-
 
 </div>
 
 
 
 
+</div>
 
 
 
 
 
 
-{/* FORM */}
+
+
+
+{/* Form */}
 
 
 
 <div
 
+
 className="
+
 lg:col-span-3
+
 bg-white
+
 rounded-3xl
+
 shadow-xl
+
 p-10
+
 "
 
 >
@@ -424,37 +516,32 @@ p-10
 
 onSubmit={handleSubmit}
 
-className="
-space-y-6
-"
+className="space-y-6"
 
 >
 
 
-
-
-
 {
+
 status &&
 
 <div
 
-className={`
+className="
+
+bg-green-100
+
+text-green-700
+
 rounded-xl
+
 p-4
-${
-success
-?
-"bg-green-100 text-green-700"
-:
-"bg-red-100 text-red-700"
-}
-`}
+
+"
 
 >
 
 {status}
-
 
 </div>
 
@@ -464,19 +551,19 @@ success
 
 
 
-
-
-
 <div
 
 className="
+
 grid
+
 md:grid-cols-2
+
 gap-6
+
 "
 
 >
-
 
 
 <input
@@ -489,20 +576,11 @@ onChange={handleChange}
 
 required
 
-placeholder="Full Name"
+placeholder="姓名"
 
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
+className="border rounded-xl p-4"
 
 />
-
-
 
 
 
@@ -514,19 +592,11 @@ value={form.company}
 
 onChange={handleChange}
 
-placeholder="Company"
+placeholder="公司名称"
 
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
+className="border rounded-xl p-4"
 
 />
-
 
 
 </div>
@@ -538,13 +608,16 @@ focus:ring-yellow-500
 
 
 
-
 <div
 
 className="
+
 grid
+
 md:grid-cols-2
+
 gap-6
+
 "
 
 >
@@ -562,16 +635,9 @@ onChange={handleChange}
 
 required
 
-placeholder="Email Address"
+placeholder="邮箱地址"
 
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
+className="border rounded-xl p-4"
 
 />
 
@@ -586,19 +652,11 @@ value={form.phone}
 
 onChange={handleChange}
 
-placeholder="Phone Number"
+placeholder="联系电话"
 
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
+className="border rounded-xl p-4"
 
 />
-
 
 
 </div>
@@ -610,17 +668,20 @@ focus:ring-yellow-500
 
 
 
-
-
 <div
 
 className="
+
 grid
+
 md:grid-cols-2
+
 gap-6
+
 "
 
 >
+
 
 
 <input
@@ -631,20 +692,11 @@ value={form.country}
 
 onChange={handleChange}
 
-placeholder="Country"
+placeholder="国家/地区"
 
-className="
-border
-rounded-xl
-p-4
-outline-none
-focus:ring-2
-focus:ring-yellow-500
-"
+className="border rounded-xl p-4"
 
 />
-
-
 
 
 
@@ -657,39 +709,35 @@ value={form.product}
 
 onChange={handleChange}
 
-className="
-border
-rounded-xl
-p-4
-outline-none
-"
+className="border rounded-xl p-4"
 
 >
 
 
 <option value="">
-Product Interest
+选择产品类别
 </option>
 
 
 <option value="Czech Crystal">
-Czech Crystal
-</option>
-
-
-<option value="European Products">
-European Products
+捷克水晶
 </option>
 
 
 <option value="Industrial Supply">
-Industrial Supply
+工业供应链
+</option>
+
+
+<option value="European Trade">
+欧洲贸易
 </option>
 
 
 <option value="Other">
-Other
+其他
 </option>
+
 
 
 </select>
@@ -705,30 +753,38 @@ Other
 
 
 
-
 <textarea
+
 
 name="message"
 
+
 value={form.message}
+
 
 onChange={handleChange}
 
+
 required
+
 
 rows={6}
 
-placeholder="Tell us about your inquiry..."
+
+placeholder="请输入您的合作需求..."
 
 className="
+
 w-full
+
 border
+
 rounded-xl
+
 p-4
+
 resize-none
-outline-none
-focus:ring-2
-focus:ring-yellow-500
+
 "
 
 />
@@ -739,23 +795,35 @@ focus:ring-yellow-500
 
 
 
-
 <button
 
-disabled={loading}
 
 type="submit"
 
+
+disabled={loading}
+
+
 className="
+
 w-full
+
 bg-yellow-500
+
 hover:bg-yellow-600
+
 disabled:bg-gray-400
+
 text-white
+
 py-4
+
 rounded-xl
+
 font-semibold
+
 transition
+
 "
 
 
@@ -763,15 +831,23 @@ transition
 
 
 {
+
 loading
+
 ?
-"Sending..."
+
+"发送中..."
+
 :
-"Send Inquiry"
+
+"提交咨询"
+
 }
 
 
+
 </button>
+
 
 
 
@@ -785,18 +861,27 @@ loading
 
 
 
-</div>
 
 
 
 
 </div>
+
+
+
+
+
+
+</div>
+
 
 
 </section>
 
 
+
 );
+
 
 
 }

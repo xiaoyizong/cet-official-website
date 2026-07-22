@@ -1,22 +1,63 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+
+
+const SITE_URL =
+  "https://www.centraleuropetrading.com";
+
 
 
 export default function robots(): MetadataRoute.Robots {
 
+
   return {
 
-    rules: {
 
-      userAgent: "*",
+    rules:{
 
-      allow: "/",
+
+      userAgent:"*",
+
+
+      allow:"/",
+
+
+
+      disallow:[
+
+
+        "/api/",
+
+
+        "/_next/",
+
+
+        "/admin/",
+
+
+        "/dashboard/",
+
+
+        "/private/",
+
+
+        "/login/"
+
+
+      ]
+
 
     },
 
 
+
     sitemap:
-    "https://www.centraleuropetrading.com/sitemap.xml",
+
+
+      `${SITE_URL}/sitemap.xml`
+
+
 
   };
+
 
 }

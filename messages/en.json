@@ -1,12 +1,48 @@
-{
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "products": "Products",
-    "contact": "Contact"
-  },
-  "hero": {
-    "title": "Connecting Czech Heritage with the World",
-    "subtitle": "Premium European Cultural Trade"
-  }
+const en = {
+
+nav:{
+home:"HOME",
+about:"ABOUT",
+products:"PRODUCTS",
+global:"GLOBAL TRADE",
+contact:"CONTACT"
+},
+
+
+hero:{
+title:"Connecting European Heritage With Global Markets",
+
+subtitle:
+"European Products · Global Trade · Trusted Partnerships"
+},
+
+
+about:{
+title:"About CET",
+
+text:
+"Central Europe Trading (CET) is an international trading company specializing in European premium products and industrial supply chain solutions."
+},
+
+
+products:{
+title:"Our Products",
+
+crystal:"Czech Crystal",
+
+premium:"European Premium Products",
+
+industry:"Industrial Supply Chain"
+
+},
+
+
+contact:{
+title:"Contact Us"
 }
+
+
+};
+
+
+export default en;

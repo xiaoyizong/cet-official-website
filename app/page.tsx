@@ -1,102 +1,132 @@
 import Navbar from "@/components/Navbar";
 
 import Hero from "@/components/Hero";
-
 import About from "@/components/About";
-
 import WhyChoose from "@/components/WhyChoose";
-
 import Products from "@/components/Products";
-
 import GlobalNetwork from "@/components/GlobalNetwork";
-
 import Statistics from "@/components/Statistics";
-
 import Partners from "@/components/Partners";
-
 import Contact from "@/components/Contact";
-
 import Footer from "@/components/Footer";
 
 
 export default function Home() {
+
+
   return (
 
-    <main className="min-h-screen">
+    <main
+      className="
+      min-h-screen
+      bg-white
+      "
+    >
 
 
-      {/* ================= Navbar ================= */}
+      {/* Navigation */}
 
       <Navbar />
 
 
 
-      {/* ================= Hero ================= */}
+      {/* Hero */}
 
-      <Hero />
+      <section id="home">
+
+        <Hero />
+
+      </section>
 
 
 
-      {/* ================= About CET ================= */}
+
+
+      {/* About */}
 
       <section id="about">
+
         <About />
+
       </section>
 
 
 
 
-      {/* ================= Why Choose CET ================= */}
 
-      <WhyChoose />
+      {/* Why Choose */}
 
+      <section id="why-choose">
 
+        <WhyChoose />
 
-
-
-      {/* ================= Products ================= */}
-
-      <Products />
+      </section>
 
 
 
 
 
-      {/* ================= Global Network ================= */}
+      {/* Products */}
+
+      <section id="products">
+
+        <Products />
+
+      </section>
+
+
+
+
+
+      {/* Global Network */}
 
       <section id="global-network">
+
         <GlobalNetwork />
+
       </section>
 
 
 
 
 
-      {/* ================= Statistics ================= */}
+      {/* Statistics */}
 
-      <Statistics />
+      <section id="statistics">
 
+        <Statistics />
 
-
-
-
-      {/* ================= Partners ================= */}
-
-      <Partners />
+      </section>
 
 
 
 
 
-      {/* ================= Contact ================= */}
+      {/* Partners */}
 
-      <Contact />
+      <section id="partners">
+
+        <Partners />
+
+      </section>
 
 
 
 
 
-      {/* ================= Footer ================= */}
+      {/* Contact */}
+
+      <section id="contact">
+
+        <Contact />
+
+      </section>
+
+
+
+
+
+      {/* Footer */}
 
       <Footer />
 
@@ -105,4 +135,5 @@ export default function Home() {
     </main>
 
   );
+
 }

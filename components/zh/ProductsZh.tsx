@@ -8,44 +8,24 @@ import { ArrowRight } from "lucide-react";
 
 
 
-type Product = {
-
-  number:string;
-
-  title:string;
-
-  subtitle:string;
-
-  image:string;
-
-  desc:string;
-
-  link:string;
-
-};
+export default function ProductsZh() {
 
 
 
-
-
-export default function Products(){
-
-
-
-const products:Product[]=[
+const products = [
 
 
 {
 number:"01",
 
-title:"Czech Crystal",
+title:"捷克水晶",
 
 subtitle:"Czech Crystal Heritage",
 
 image:"/images/crystal.jpg",
 
 desc:
-"Traditional Czech crystal craftsmanship combining European heritage, artistic design and exceptional quality.",
+"传承欧洲百年工艺的捷克水晶产品，结合传统文化、艺术设计与卓越品质。",
 
 link:"/products/crystal"
 
@@ -53,17 +33,18 @@ link:"/products/crystal"
 
 
 
+
 {
 number:"02",
 
-title:"European Premium Products",
+title:"欧洲精品贸易",
 
-subtitle:"European Fine Trade",
+subtitle:"European Premium Products",
 
 image:"/images/wine.jpg",
 
 desc:
-"Selected European products representing quality, culture and craftsmanship, connecting European suppliers with global markets.",
+"精选欧洲高品质商品，连接欧洲制造商与全球市场，提供可靠的国际贸易服务。",
 
 link:"/products/wine"
 
@@ -71,17 +52,18 @@ link:"/products/wine"
 
 
 
+
 {
 number:"03",
 
-title:"Industrial Supply Chain",
+title:"工业供应链",
 
-subtitle:"European Industrial Solutions",
+subtitle:"Industrial Supply Chain",
 
 image:"/images/industry.jpg",
 
 desc:
-"Reliable industrial solutions from European manufacturers supporting global cooperation and stable supply networks.",
+"提供欧洲工业设备、制造资源及供应链解决方案，支持全球企业合作。",
 
 link:"/products/industry"
 
@@ -95,17 +77,27 @@ link:"/products/industry"
 
 
 
-return (
+
+
+return(
+
 
 <section
 
+
 id="products"
 
+
 className="
+
 py-28
+
 bg-gradient-to-b
+
 from-gray-50
+
 to-white
+
 "
 
 
@@ -114,10 +106,15 @@ to-white
 
 <div
 
+
 className="
+
 max-w-7xl
+
 mx-auto
+
 px-6
+
 "
 
 
@@ -125,38 +122,52 @@ px-6
 
 
 
-{/* Header */}
+
+
+
+
+{/* Title */}
+
 
 
 <motion.div
 
 
 initial={{
+
 opacity:0,
+
 y:40
+
 }}
 
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
 
 
 viewport={{
+
 once:true
+
 }}
 
 
 transition={{
+
 duration:0.7
+
 }}
 
 
 
-className="
-text-center
-"
+className="text-center"
+
 
 
 >
@@ -165,38 +176,55 @@ text-center
 <p
 
 className="
-text-yellow-500
-font-semibold
-tracking-[0.35em]
-uppercase
-text-sm
-"
 
+text-yellow-500
+
+font-semibold
+
+tracking-[0.35em]
+
+uppercase
+
+text-sm
+
+"
 
 >
 
-CET COLLECTION
+CET 产品体系
 
 </p>
+
+
+
+
 
 
 
 <h2
 
 className="
-mt-4
-text-4xl
-md:text-5xl
-font-bold
-text-[#0f2b4d]
-"
 
+mt-4
+
+text-4xl
+
+md:text-5xl
+
+font-bold
+
+text-[#0f2b4d]
+
+"
 
 >
 
-Our Products
+我们的产品
 
 </h2>
+
+
+
 
 
 
@@ -204,19 +232,22 @@ Our Products
 <p
 
 className="
-mt-5
-text-lg
-text-gray-500
-max-w-3xl
-mx-auto
-"
 
+mt-5
+
+text-lg
+
+text-gray-500
+
+max-w-3xl
+
+mx-auto
+
+"
 
 >
 
-European Quality.
-Global Supply.
-Trusted Partnership.
+欧洲品质 · 全球供应 · 长期合作
 
 </p>
 
@@ -230,16 +261,24 @@ Trusted Partnership.
 
 
 
-{/* Products Grid */}
+
+
+{/* Cards */}
+
 
 
 <div
 
 className="
+
 grid
+
 md:grid-cols-3
+
 gap-10
+
 mt-16
+
 "
 
 
@@ -247,6 +286,8 @@ mt-16
 
 
 {
+
+
 products.map((item,index)=>(
 
 
@@ -257,11 +298,12 @@ products.map((item,index)=>(
 key={item.number}
 
 
+
 initial={{
 
 opacity:0,
 
-y:60
+y:50
 
 }}
 
@@ -295,14 +337,6 @@ delay:index*0.15
 
 
 
-whileHover={{
-
-y:-8
-
-}}
-
-
-
 >
 
 
@@ -328,11 +362,13 @@ shadow-lg
 
 border
 
-border-gray-100
+border-transparent
 
 hover:border-yellow-400
 
 hover:shadow-2xl
+
+hover:-translate-y-3
 
 transition-all
 
@@ -345,19 +381,29 @@ duration-500
 
 
 
+
+
+
+
+
 {/* Image */}
+
 
 
 <div
 
 className="
+
 relative
+
 h-72
+
 overflow-hidden
+
 "
 
->
 
+>
 
 
 <Image
@@ -366,17 +412,10 @@ overflow-hidden
 src={item.image}
 
 
-alt={`${item.title} - Central Europe Trading`}
+alt={item.title}
 
 
 fill
-
-
-sizes="
-(max-width:768px)100vw,
-(max-width:1200px)50vw,
-33vw
-"
 
 
 className="
@@ -393,6 +432,9 @@ group-hover:scale-110
 
 
 />
+
+
+
 
 
 
@@ -426,7 +468,6 @@ font-bold
 
 >
 
-
 {item.number}
 
 
@@ -434,7 +475,14 @@ font-bold
 
 
 
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -444,22 +492,32 @@ font-bold
 {/* Content */}
 
 
+
 <div
 
+
 className="
+
 p-8
+
 "
 
 
 >
 
 
+
 <h3
 
+
 className="
+
 text-2xl
+
 font-bold
+
 text-[#0f2b4d]
+
 "
 
 
@@ -472,12 +530,20 @@ text-[#0f2b4d]
 
 
 
+
+
+
 <p
 
+
 className="
+
 mt-2
+
 text-yellow-600
+
 font-medium
+
 "
 
 
@@ -490,12 +556,20 @@ font-medium
 
 
 
+
+
+
 <p
 
+
 className="
+
 mt-5
+
 text-gray-600
+
 leading-7
+
 "
 
 
@@ -504,6 +578,8 @@ leading-7
 {item.desc}
 
 </p>
+
+
 
 
 
@@ -523,7 +599,7 @@ items-center
 
 gap-3
 
-text-[#d4a017]
+text-yellow-600
 
 font-semibold
 
@@ -532,15 +608,12 @@ font-semibold
 
 >
 
-
-View Details
+查看详情
 
 
 <ArrowRight
 
-
 size={18}
-
 
 className="
 
@@ -552,7 +625,6 @@ group-hover:translate-x-2
 
 "
 
-
 />
 
 
@@ -561,12 +633,18 @@ group-hover:translate-x-2
 
 
 
+
+
+
 </div>
 
 
 
-</Link>
 
+
+
+
+</Link>
 
 
 </motion.div>
@@ -574,11 +652,19 @@ group-hover:translate-x-2
 
 
 ))
+
+
 }
 
 
 
+
 </div>
+
+
+
+
+
 
 
 
@@ -589,7 +675,9 @@ group-hover:translate-x-2
 </section>
 
 
+
 );
+
 
 
 }

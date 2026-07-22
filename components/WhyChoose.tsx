@@ -1,62 +1,186 @@
 export default function WhyChoose() {
+
   const items = [
+
     {
-      title: "欧洲原产地",
-      text: "长期合作欧洲优质供应商，确保产品来源可靠。"
+      title: "European Origin",
+      text:
+        "Long-term partnerships with trusted European suppliers ensure authentic products and reliable sourcing."
     },
+
+
     {
-      title: "品质保证",
-      text: "严格的质量控制流程，提供稳定可靠的产品。"
+      title: "Quality Assurance",
+      text:
+        "Strict quality control processes guarantee stable, reliable and premium products for our customers."
     },
+
+
     {
-      title: "全球贸易",
-      text: "服务亚洲、欧洲及全球客户，拥有丰富出口经验。"
+      title: "Global Trade",
+      text:
+        "Serving customers across Asia, Europe and global markets with professional international trade experience."
     },
+
+
     {
-      title: "长期合作",
-      text: "坚持诚信经营，与客户建立长期稳定合作关系。"
+      title: "Long-Term Partnership",
+      text:
+        "Building trusted relationships through integrity, professional service and sustainable cooperation."
     }
+
   ];
 
-  return (
-    <section className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-4xl font-bold text-center text-[#0f2b4d]">
-          为什么选择 CET
+
+  return (
+
+    <section
+      className="
+      py-24
+      bg-white
+      "
+    >
+
+
+      <div
+        className="
+        max-w-6xl
+        mx-auto
+        px-6
+        "
+      >
+
+
+
+        {/* Title */}
+
+
+        <h2
+          className="
+          text-4xl
+          md:text-5xl
+          font-bold
+          text-center
+          text-[#0f2b4d]
+          "
+        >
+          Why Choose CET
         </h2>
 
-        <p className="text-center mt-4 text-gray-500">
-          Why Choose CET
+
+
+        <p
+          className="
+          text-center
+          mt-4
+          text-gray-500
+          text-lg
+          "
+        >
+          Trusted European Trade Partner
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-14">
 
-          {items.map((item, index) => (
+
+
+
+        {/* Cards */}
+
+
+        <div
+          className="
+          grid
+          md:grid-cols-2
+          lg:grid-cols-4
+          gap-8
+          mt-14
+          "
+        >
+
+
+
+          {items.map((item,index)=>(
+
 
             <div
+
               key={index}
-              className="p-8 rounded-xl shadow hover:shadow-xl transition"
+
+              className="
+              p-8
+              rounded-xl
+              bg-white
+              border
+              border-gray-100
+              shadow-md
+              hover:shadow-xl
+              hover:-translate-y-2
+              transition-all
+              duration-300
+              "
+
             >
-              <div className="text-5xl mb-5">
+
+
+
+              <div
+                className="
+                text-5xl
+                mb-5
+                "
+              >
                 ⭐
               </div>
 
-              <h3 className="text-xl font-bold text-[#0f2b4d]">
+
+
+
+
+              <h3
+                className="
+                text-xl
+                font-bold
+                text-[#0f2b4d]
+                "
+              >
                 {item.title}
               </h3>
 
-              <p className="mt-4 text-gray-600 leading-7">
+
+
+
+
+              <p
+                className="
+                mt-4
+                text-gray-600
+                leading-7
+                "
+              >
                 {item.text}
               </p>
 
+
+
+
             </div>
+
 
           ))}
 
+
+
         </div>
 
+
+
       </div>
+
+
+
     </section>
+
   );
+
 }

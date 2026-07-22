@@ -1,252 +1,382 @@
 import type { Metadata, Viewport } from "next";
+
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 
 
+
 const geistSans = Geist({
+
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+
+  subsets:["latin"],
+
 });
+
 
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+
+  variable:"--font-geist-mono",
+
+  subsets:["latin"],
+
 });
+
+
+
+
+
+const SITE_URL =
+"https://www.centraleuropetrading.com";
+
+
+
 
 
 
 export const metadata: Metadata = {
 
-  metadataBase: new URL(
-    "https://www.centraleuropetrading.com"
-  ),
 
+metadataBase:
 
-  applicationName:
-    "CENTRAL EUROPE TRADING",
+new URL(SITE_URL),
 
 
 
-  title: {
+applicationName:
 
-    default:
-      "CENTRAL EUROPE TRADING | European Trade & Global Supply Chain",
+"CENTRAL EUROPE TRADING",
 
-    template:
-      "%s | CENTRAL EUROPE TRADING"
 
-  },
 
 
-  description:
-    "CENTRAL EUROPE TRADING connects Czech heritage, European premium products, industrial supply chains and global markets through trusted international trade.",
 
+title:{
 
 
-  keywords:[
+default:
 
-    "Central Europe Trading",
-    "CET",
-    "Czech Crystal",
-    "European Trade",
-    "European Premium Products",
-    "Industrial Supply Chain",
-    "International Trading",
-    "European Export",
-    "Europe Asia Trade",
-    "Global Business"
+"CENTRAL EUROPE TRADING | European Products & Global Trade Solutions",
 
-  ],
 
 
+template:
 
-  authors:[
+"%s | CENTRAL EUROPE TRADING"
 
-    {
-      name:
-      "CENTRAL EUROPE TRADING"
-    }
 
-  ],
+},
 
 
 
-  creator:
-    "CENTRAL EUROPE TRADING",
 
 
 
-  publisher:
-    "CENTRAL EUROPE TRADING",
+description:
 
 
+"CENTRAL EUROPE TRADING connects European premium products, reliable suppliers and global markets through professional international trade and supply chain solutions.",
 
-  category:
-    "Business",
 
 
 
-  alternates:{
 
-    canonical:
-      "https://www.centraleuropetrading.com"
 
-  },
 
+keywords:[
 
 
-  openGraph:{
+"Central Europe Trading",
 
+"European Trading Company",
 
-    title:
-      "CENTRAL EUROPE TRADING | European Trade & Global Supply Chain",
+"International Trade",
 
+"Global Supply Chain",
 
-    description:
-      "Connecting Czech heritage, European premium products and global markets.",
+"European Export",
 
+"European Import",
 
-    url:
-      "https://www.centraleuropetrading.com",
+"Europe Asia Trade",
 
+"Premium European Products",
 
-    siteName:
-      "CENTRAL EUROPE TRADING",
+"Czech Crystal",
 
+"Industrial Equipment",
 
-    locale:
-      "en_US",
+"B2B Trading",
 
+"Global Sourcing"
 
-    type:
-      "website",
 
+],
 
-    images:[
 
-      {
 
-        url:
-          "/images/og-image.jpg",
 
-        width:
-          1200,
 
-        height:
-          630,
+authors:[
 
-        alt:
-          "CENTRAL EUROPE TRADING"
+{
 
-      }
+name:
 
-    ]
+"CENTRAL EUROPE TRADING"
 
-  },
+}
 
+],
 
 
-  twitter:{
 
 
-    card:
-      "summary_large_image",
 
+creator:
 
-    title:
-      "CENTRAL EUROPE TRADING",
+"CENTRAL EUROPE TRADING",
 
 
-    description:
-      "European Trade & Global Supply Chain Partner",
 
+publisher:
 
-    images:[
+"CENTRAL EUROPE TRADING",
 
-      "/images/og-image.jpg"
 
-    ]
 
-  },
 
 
 
-  icons:{
 
+alternates:{
 
-    icon:[
 
-      {
+canonical:
 
-        url:
-          "/favicon.svg",
+SITE_URL,
 
-        type:
-          "image/svg+xml"
 
-      }
 
-    ],
+languages:{
 
 
-    shortcut:
-      "/favicon.svg",
+"en":
 
+SITE_URL,
 
-    apple:
-      "/favicon.svg"
 
+"zh-CN":
 
-  },
+`${SITE_URL}/zh`,
 
 
+"x-default":
 
-  robots:{
+SITE_URL
 
 
-    index:true,
+}
 
 
-    follow:true,
 
+},
 
-    googleBot:{
 
 
-      index:true,
 
 
-      follow:true,
 
 
-      "max-image-preview":
-        "large",
 
+openGraph:{
 
-      "max-snippet":
-        -1,
 
 
-      "max-video-preview":
-        -1
+title:
 
-    }
+"CENTRAL EUROPE TRADING | Connecting Europe With Global Markets",
 
-  },
 
 
 
-  formatDetection:{
+description:
 
 
-    email:false,
+"Professional international trade partner connecting European suppliers, premium products and worldwide business opportunities.",
 
-    address:false,
 
-    telephone:false
 
-  }
+url:
+
+SITE_URL,
+
+
+
+siteName:
+
+"CENTRAL EUROPE TRADING",
+
+
+
+locale:
+
+"en_US",
+
+
+
+type:
+
+"website",
+
+
+
+
+images:[
+
+
+{
+
+url:
+
+`${SITE_URL}/images/og-image.svg`,
+
+
+width:
+
+1200,
+
+
+height:
+
+630,
+
+
+alt:
+
+"CENTRAL EUROPE TRADING"
+
+}
+
+
+]
+
+
+
+},
+
+
+
+
+
+
+
+twitter:{
+
+
+card:
+
+"summary_large_image",
+
+
+title:
+
+"CENTRAL EUROPE TRADING",
+
+
+description:
+
+"European products, global suppliers and international trade solutions.",
+
+
+images:[
+
+`${SITE_URL}/images/og-image.svg`
+
+]
+
+
+},
+
+
+
+
+
+
+
+robots:{
+
+
+
+index:true,
+
+
+follow:true,
+
+
+
+googleBot:{
+
+
+index:true,
+
+
+follow:true,
+
+
+
+"max-image-preview":
+
+"large",
+
+
+"max-snippet":
+
+-1,
+
+
+"max-video-preview":
+
+-1
+
+
+}
+
+
+
+},
+
+
+
+
+
+
+
+
+icons:{
+
+
+icon:
+
+"/favicon.svg",
+
+
+
+shortcut:
+
+"/favicon.svg",
+
+
+
+apple:
+
+"/favicon.svg"
+
+
+}
+
 
 
 };
@@ -255,18 +385,34 @@ export const metadata: Metadata = {
 
 
 
-export const viewport: Viewport = {
 
-  width:
-    "device-width",
 
-  initialScale:
-    1,
 
-  themeColor:
-    "#0f2b4d"
+
+export const viewport:Viewport={
+
+
+width:
+
+"device-width",
+
+
+initialScale:
+
+1,
+
+
+themeColor:
+
+"#0f2b4d"
+
+
 
 };
+
+
+
+
 
 
 
@@ -274,110 +420,279 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
 
-  children,
+children,
 
-}: Readonly<{
+}:Readonly<{
 
-  children: React.ReactNode;
+children:React.ReactNode;
 
 }>) {
 
 
-  const organizationSchema = {
 
-    "@context":
-      "https://schema.org",
+const structuredData={
 
 
-    "@type":
-      "Organization",
+"@context":
 
-
-    name:
-      "CENTRAL EUROPE TRADING",
-
-
-    url:
-      "https://www.centraleuropetrading.com",
-
-
-    logo:
-      "https://www.centraleuropetrading.com/logo.svg",
-
-
-    description:
-      "European Trade & Global Supply Chain Partner connecting Czech heritage, premium products and international markets.",
-
-
-    email:
-      "info@centraleuropetrading.com",
-
-
-    address:{
-
-      "@type":
-        "PostalAddress",
-
-      addressCountry:
-        "Czech Republic"
-
-    }
-
-
-  };
+"https://schema.org",
 
 
 
-  return (
+"@type":
 
-    <html
-
-      lang="en"
-
-      className={`
-        ${geistSans.variable}
-        ${geistMono.variable}
-        h-full
-        antialiased
-      `}
-
-    >
+"Organization",
 
 
-      <body
 
-        className="
-          min-h-screen
-          flex
-          flex-col
-          bg-white
-        "
+name:
 
-      >
+"CENTRAL EUROPE TRADING",
 
 
-        <script
 
-          type="application/ld+json"
+url:
 
-          dangerouslySetInnerHTML={{
-
-            __html:
-              JSON.stringify(organizationSchema)
-
-          }}
-
-        />
+SITE_URL,
 
 
-        {children}
+
+logo:
+
+`${SITE_URL}/logo.svg`,
 
 
-      </body>
+
+description:
+
+"European international trading company connecting suppliers, products and global markets.",
 
 
-    </html>
 
-  );
+
+email:
+
+"info@centraleuropetrading.com",
+
+
+
+areaServed:[
+
+
+"Europe",
+
+"Asia",
+
+"Global Market"
+
+
+],
+
+
+
+
+contactPoint:{
+
+
+"@type":
+
+"ContactPoint",
+
+
+
+contactType:
+
+"Business Inquiry",
+
+
+
+email:
+
+"info@centraleuropetrading.com",
+
+
+
+availableLanguage:[
+
+"English",
+
+"Chinese"
+
+]
+
+
+},
+
+
+
+
+sameAs:[
+
+
+"https://www.linkedin.com/",
+
+"https://www.facebook.com/"
+
+
+]
+
+
+};
+
+
+
+
+
+
+
+const websiteSchema={
+
+
+"@context":
+
+"https://schema.org",
+
+
+
+"@type":
+
+"WebSite",
+
+
+
+name:
+
+"CENTRAL EUROPE TRADING",
+
+
+
+url:
+
+SITE_URL
+
+
+
+};
+
+
+
+
+
+
+
+
+
+return (
+
+
+
+<html
+
+
+lang="en"
+
+
+suppressHydrationWarning
+
+
+
+className={`
+
+${geistSans.variable}
+
+${geistMono.variable}
+
+h-full
+
+antialiased
+
+`}
+
+
+>
+
+
+<body
+
+
+className="
+
+min-h-screen
+
+flex
+
+flex-col
+
+bg-white
+
+"
+
+>
+
+
+
+
+<script
+
+
+type="application/ld+json"
+
+
+dangerouslySetInnerHTML={{
+
+
+__html:
+
+JSON.stringify(structuredData)
+
+
+}}
+
+
+/>
+
+
+
+
+
+<script
+
+
+type="application/ld+json"
+
+
+dangerouslySetInnerHTML={{
+
+
+__html:
+
+JSON.stringify(websiteSchema)
+
+
+}}
+
+
+/>
+
+
+
+
+
+
+{children}
+
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+);
+
 
 }

@@ -1,12 +1,49 @@
-{
-  "nav": {
-    "home": "首页",
-    "about": "关于我们",
-    "products": "产品中心",
-    "contact": "联系我们"
-  },
-  "hero": {
-    "title": "连接捷克文化，走向世界",
-    "subtitle": "欧洲精品贸易与文化交流"
-  }
+const zh = {
+
+
+nav:{
+home:"首页",
+about:"关于CET",
+products:"产品",
+global:"全球贸易",
+contact:"联系我们"
+},
+
+
+hero:{
+title:"连接欧洲传统与全球市场",
+
+subtitle:
+"欧洲产品 · 国际贸易 · 可靠合作"
+},
+
+
+about:{
+title:"关于 CET",
+
+text:
+"CET是一家专注于国际贸易、欧洲精品产品和工业供应链服务的国际贸易公司。"
+},
+
+
+products:{
+title:"我们的产品",
+
+crystal:"捷克水晶",
+
+premium:"欧洲精品产品",
+
+industry:"工业供应链"
+
+},
+
+
+contact:{
+title:"联系我们"
 }
+
+
+};
+
+
+export default zh;
